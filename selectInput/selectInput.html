@@ -1,0 +1,45 @@
+<template>
+  <div class={componentClass}>
+      <label if:true={label} for="select-input" class={labelClass}>
+          <abbr if:true={required} title="required" class="slds-required">
+              *
+          </abbr>
+          {label}
+      </label>
+      <lightning-helptext
+          if:true={fieldLevelHelp}
+          content={fieldLevelHelp}></lightning-helptext>
+
+      <div class="slds-form-element__control">
+          <select
+              id="select-input"
+              class={selectClass}
+              name={name}
+              autocomplete={autocomplete}
+              disabled={disabled}
+              onblur={handleBlur}
+              onfocus={handleFocus}
+              onchange={handleSelect}
+              required={required}>
+              <option disabled selected={defaultSelection} value>
+                  {placeholder}
+              </option>
+              <template for:each={mappedOptions} for:item="option">
+                  <option
+                      key={option.key}
+                      value={option.value}
+                      selected={option.selected}>
+                      {option.label}
+                  </option>
+              </template>
+          </select>
+      </div>
+
+      <div
+          if:true={hasError}
+          aria-live="assertive"
+          class="slds-form-element__help">
+          {messageWhenValueMissing}
+      </div>
+  </div>
+</template>

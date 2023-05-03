@@ -1,0 +1,4 @@
+.slds-has-error select {
+    --slds-c-input-color-border: var(--slds-g-color-error-base-40, #ea001e);
+    --slds-c-input-shadow: var(--slds-g-color-error-base-40, #ea001e) 0 0 0 1px inset;
+}
